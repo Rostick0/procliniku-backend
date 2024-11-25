@@ -1,7 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\EmailCodeController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +31,15 @@ Route::prefix('v1')
             });
         });
 
+        Route::apiResource('files', FileController::class)->only(['store', 'show', 'destroy']);
+        Route::apiResource('images', ImageController::class)->only(['index', 'store', 'show', 'destroy']);
+
         Route::post('/email-code', [EmailCodeController::class, 'store']);
+
+        Route::apiResources([
+            'clinics' => ClinicController::class,
+            'reviews' => ReviewController::class,
+            'categories' => CategoryController::class,
+            'services' => ServiceController::class
+        ]);
     });
