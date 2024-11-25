@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Clinic;
+namespace App\Http\Requests\Review;
 
+use App\Models\Clinic;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreClinicRequest extends FormRequest
+class StoreReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +24,9 @@ class StoreClinicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'address' => 'required|max:255',
-            'phone' => 'required|max:255',
-            'longitude' => 'required',
-            'latitude' => 'required',
+            'rating' => 'required|numeric|min:1|max:5',
+            'text' => 'required|max:255',
+            'clinic_id' => ['required', Rule::exists(Clinic::class, 'id')],
         ];
     }
 }

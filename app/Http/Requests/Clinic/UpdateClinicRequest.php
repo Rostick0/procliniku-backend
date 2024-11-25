@@ -25,7 +25,6 @@ class UpdateClinicRequest extends FormRequest
             'name' => 'filled|max:255',
             'address' => 'filled|max:255',
             'phone' => 'filled|max:255',
-            'rating' => 'filled|numeric|min:1|max:5',
             'longitude' => 'filled',
             'latitude' => 'filled',
         ];

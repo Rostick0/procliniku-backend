@@ -30,7 +30,6 @@ class ClinicPolicy
      */
     public function create(User $user): bool
     {
-        return true;
         return in_array($user->role, [UserRole::admin->value, UserRole::owner->value]);
     }
 
