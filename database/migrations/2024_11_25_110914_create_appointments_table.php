@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->float('price');
             $table->date('date');
+            $table->foreignId('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->foreignId('clinic_id')->references('id')->on('clinics')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
