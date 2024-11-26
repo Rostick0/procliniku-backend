@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone');
-            $table->float('rating');
+            $table->float('rating')->default(0);
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->foreignId('owner_id')->references('id')->on('users')->onDelete('cascade');
