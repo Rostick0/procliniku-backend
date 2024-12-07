@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->string('phone');
             $table->float('rating')->default(0);
             $table->string('link')->nullable();
             $table->string('link_name');

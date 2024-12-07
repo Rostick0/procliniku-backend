@@ -24,7 +24,6 @@ class StoreClinicRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'address' => 'required|max:255',
-            'phone' => 'required|max:255',
             'link' => 'nullable|max:255',
             'link_name' => 'required|max:255',
             'longitude' => 'required',

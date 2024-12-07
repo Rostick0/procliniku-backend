@@ -44,6 +44,17 @@ class ClinicController extends ApiController
 
             $data->images()->createMany($images);
         }
+
+        if ($request->has('clinic_phones')) {
+            $data->clinic_phones()->delete();
+
+            $clinic_phones = array_map(
+                fn($phone) => ['phone' => $phone],
+                QueryString::convertToArray($request->clinic_phones)
+            );
+
+            $data->clinic_phones()->createMany($clinic_phones);
+        }
     }
 
     public function __construct()

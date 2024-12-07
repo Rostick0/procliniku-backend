@@ -51,4 +51,9 @@ class Clinic extends Model
     {
         return $this->hasMany(ClinicService::class);
     }
+
+    public function clinic_phones()
+    {
+        return $this->hasMany(ClinicPhone::class);
+    }
 }
