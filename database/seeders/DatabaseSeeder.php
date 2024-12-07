@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Clinic;
+use App\Models\ClinicCategory;
+use App\Models\ClinicPhone;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,8 +22,14 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ServiceTypeSeeder::class,
             ServiceCategorySeeder::class,
+            CategorySeeder::class,
         ]);
 
-        // Clinic::factory(20)->create();
+        for ($i = 0; $i <= 40; $i++) {
+            Clinic::factory()
+                ->has(ClinicPhone::factory(random_int(1, 2)), 'clinic_phones')
+                ->has(ClinicCategory::factory(1), 'clinic_categories')
+                ->create();
+        }
     }
 }

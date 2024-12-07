@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Clinic\StoreClinicRequest;
 use App\Http\Requests\Clinic\UpdateClinicRequest;
 use App\Models\Clinic;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Rostislav\LaravelFilters\Filters\QueryString;
 
@@ -64,5 +65,14 @@ class ClinicController extends ApiController
         $this->update_request = new UpdateClinicRequest;
         $this->is_auth_id = true;
         $this->string_user_id = "owner_id";
+    }
+
+    public function showByLinkName(Request $request, string $link_name)
+    {
+        return new JsonResponse([
+            'data' => Clinic::with(QueryString::convertToArray($request->extends))
+                ->where('link_name', $link_name)
+                ->firstOrFail()
+        ]);
     }
 }

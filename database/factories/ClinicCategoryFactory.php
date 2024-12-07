@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ClinicCategory>
  */
-class ServiceFactory extends Factory
+class ClinicCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,7 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'
+            'category_id' => Category::inRandomOrder()->first()->id
         ];
     }
 }

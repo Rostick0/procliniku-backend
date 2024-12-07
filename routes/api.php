@@ -35,6 +35,8 @@ Route::name('api.')
 
         Route::post('/email-code', [EmailCodeController::class, 'store']);
 
+        Route::get('/clinics/link/{link_name}', [ClinicController::class, 'showByLinkName']);
+
         Route::apiResources([
             'clinics' => ClinicController::class,
             'reviews' => ReviewController::class,

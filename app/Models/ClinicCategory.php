@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ClinicCategory extends Model
 {
+    /** @use HasFactory<\Database\Factories\ClinicCategoryFactory> */
+    use HasFactory;
+
     protected $fillable = [
-        'name',
+        'clinic_id',
+        'category_id',
     ];
 
     public function clinic()

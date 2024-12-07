@@ -14,7 +14,6 @@ class Clinic extends Model
     protected $fillable = [
         'name',
         'address',
-        'phone',
         'rating',
         'link',
         'link_name',
@@ -24,6 +23,8 @@ class Clinic extends Model
         'owner_id'
     ];
 
+    protected $appends = ['main_category'];
+
     // protected function address(): Attribute
     // {
     //     return Attribute::make(
@@ -31,6 +32,12 @@ class Clinic extends Model
     //         set: fn(string $value) => strtoupper($value)
     //     );
     // }
+
+    public function getMainCategoryAttribute()
+    {
+        return $this->clinic_categories()->first()->category;
+        // return $this->clinic_categories()->with('category')->first();
+    }
 
     public function owner()
     {
