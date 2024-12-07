@@ -25,8 +25,11 @@ class UpdateClinicRequest extends FormRequest
             'name' => 'filled|max:255',
             'address' => 'filled|max:255',
             'phone' => 'filled|max:255',
+            'link' => 'nullable|max:255',
+            'link_name' => 'filled|max:255',
             'longitude' => 'filled',
             'latitude' => 'filled',
+            'description' => 'nullable|max:65536',
         ];
     }
 }

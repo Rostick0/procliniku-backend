@@ -12,8 +12,11 @@ class Clinic extends Model
         'address',
         'phone',
         'rating',
+        'link',
+        'link_name',
         'longitude',
         'latitude',
+        'description',
         'owner_id'
     ];
 

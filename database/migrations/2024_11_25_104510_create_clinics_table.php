@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->float('rating')->default(0);
+            $table->string('link')->nullable();
+            $table->string('link_name');
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
+            $table->text('description')->nullable();
             $table->foreignId('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -25,8 +25,11 @@ class StoreClinicRequest extends FormRequest
             'name' => 'required|max:255',
             'address' => 'required|max:255',
             'phone' => 'required|max:255',
+            'link' => 'nullable|max:255',
+            'link_name' => 'required|max:255',
             'longitude' => 'required',
             'latitude' => 'required',
+            'description' => 'nullable|max:65536',
         ];
     }
 }
