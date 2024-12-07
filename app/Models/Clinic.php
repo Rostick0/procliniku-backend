@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Clinic extends Model
 {
+    /** @use HasFactory<\Database\Factories\ClinicFactory> */
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'address',
@@ -35,7 +39,7 @@ class Clinic extends Model
 
     public function work_times()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(ClinicWorkTime::class);
     }
 
     public function clinic_categories()
