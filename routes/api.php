@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\EmailCodeController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
@@ -36,6 +38,9 @@ Route::name('api.')
         Route::post('/email-code', [EmailCodeController::class, 'store']);
 
         Route::get('/clinics/link/{link_name}', [ClinicController::class, 'showByLinkName']);
+
+        Route::apiResource('regions', RegionController::class)->only(['index']);
+        Route::apiResource('cities', CityController::class)->only(['index']);
 
         Route::apiResources([
             'clinics' => ClinicController::class,

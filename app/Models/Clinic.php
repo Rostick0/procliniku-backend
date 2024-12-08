@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Clinic extends Model
 {
@@ -21,7 +23,8 @@ class Clinic extends Model
         'latitude',
         'description',
         'is_verification',
-        'owner_id'
+        'owner_id',
+        'city_id',
     ];
 
     protected $appends = ['main_category'];
@@ -40,27 +43,32 @@ class Clinic extends Model
         // return $this->clinic_categories()->with('category')->first();
     }
 
-    public function owner()
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function work_times()
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function work_times(): HasMany
     {
         return $this->hasMany(ClinicWorkTime::class);
     }
 
-    public function clinic_categories()
+    public function clinic_categories(): HasMany
     {
         return $this->hasMany(ClinicCategory::class);
     }
 
-    public function clinic_services()
+    public function clinic_services(): HasMany
     {
         return $this->hasMany(ClinicService::class);
     }
 
-    public function clinic_phones()
+    public function clinic_phones(): HasMany
     {
         return $this->hasMany(ClinicPhone::class);
     }
