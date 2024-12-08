@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\User;
 use App\Utils\LinkUtil;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,6 +29,7 @@ class ClinicFactory extends Factory
             'latitude' => fake()->latitude(),
             'description' => fake()->text(random_int(100, 300)),
             'owner_id' => User::first()->id,
+            'city_id' => City::inRandomOrder()->first()->id
         ];
     }
 }

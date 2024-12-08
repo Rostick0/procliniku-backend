@@ -40,7 +40,7 @@ Route::name('api.')
         Route::get('/clinics/link/{link_name}', [ClinicController::class, 'showByLinkName']);
 
         Route::apiResource('regions', RegionController::class)->only(['index']);
-        Route::apiResource('cities', CityController::class)->only(['index']);
+        Route::apiResource('cities', CityController::class)->only(['index', 'show']);
 
         Route::apiResource('service-categories', ServiceCategoryController::class)->only(['index']);
 
