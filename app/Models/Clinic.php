@@ -20,6 +20,7 @@ class Clinic extends Model
         'longitude',
         'latitude',
         'description',
+        'is_verification',
         'owner_id'
     ];
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('is_verification')->default(0);
             $table->foreignId('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

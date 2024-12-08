@@ -65,6 +65,11 @@ class ClinicController extends ApiController
         $this->update_request = new UpdateClinicRequest;
         $this->is_auth_id = true;
         $this->string_user_id = "owner_id";
+        $this->q_request = [
+            ['name', 'LIKE'],
+            ['name', 'LIKE', 'clinic_categories.category'],
+            ['name', 'LIKE', 'clinic_services.service'],
+        ];
     }
 
     public function showByLinkName(Request $request, string $link_name)
