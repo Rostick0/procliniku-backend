@@ -9,6 +9,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,6 @@ Route::name('api.')
             Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:300,1');
             Route::post('/register', [AuthController::class, 'register']);
 
-            // 'middleware' => 'jwt'
             Route::group(['middleware' => 'jwt'], function () {
                 Route::post('/logout', [AuthController::class, 'logout']);
                 Route::post('/refresh', [AuthController::class, 'refresh']);
@@ -41,6 +41,8 @@ Route::name('api.')
 
         Route::apiResource('regions', RegionController::class)->only(['index']);
         Route::apiResource('cities', CityController::class)->only(['index']);
+
+        Route::apiResource('service-categories', ServiceCategoryController::class)->only(['index']);
 
         Route::apiResources([
             'clinics' => ClinicController::class,

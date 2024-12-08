@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_verification')->default(0);
             $table->foreignId('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

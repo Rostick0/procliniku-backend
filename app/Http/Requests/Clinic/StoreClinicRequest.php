@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Clinic;
 
+use App\Models\City;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreClinicRequest extends FormRequest
 {
@@ -29,6 +31,7 @@ class StoreClinicRequest extends FormRequest
             'longitude' => 'required',
             'latitude' => 'required',
             'description' => 'nullable|max:65536',
+            'city_id' => 'required|' . Rule::exists(City::class, 'id'),
         ];
     }
 }
