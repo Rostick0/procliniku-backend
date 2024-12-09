@@ -14,7 +14,7 @@ class CitySeeder extends Seeder
     public function run(): void
     {
         $cities = array_map(
-            fn($item) => ['name' => $item, 'region_id' => 1],
+            fn($item) => ['name' => $item, 'region_id' => 42],
             [
                 'Москва',
                 'Балашиха',

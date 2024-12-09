@@ -5,7 +5,7 @@
 @section('content')
     <table cellpadding="0" cellspacing="0" style="width:100%">
         <tr align="center">
-            <td style="color: rgb(48, 113, 231);font-size:24px;font-weight:700;padding:0 0 20px 0">
+            <td style="color: rgb(4, 110, 190);font-size:24px;font-weight:700;padding:0 0 20px 0">
                 Приветствуем!
             </td>
         </tr>

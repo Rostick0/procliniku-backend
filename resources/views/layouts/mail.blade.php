@@ -38,8 +38,8 @@
             <td style="padding:0 20px 0 20px">
                 <table cellpadding="0" cellspacing="0" style="width:100%">
                     <tr align="center">
-                        <td style="color:rgb(48, 113, 231);font-size:32px;font-weight:600;letter-spacing:0.5px;">
-                            JShoP
+                        <td style="color:rgb(4, 110, 190);font-size:32px;font-weight:600;letter-spacing:0.5px;">
+                            Procliniku
                         </td>
                     </tr>
                     <tr>

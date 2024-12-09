@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\EmailCode;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisterAuthRequest extends FormRequest
 {
@@ -22,7 +25,9 @@ class RegisterAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['required', 'max:255', Rule::unique(User::class, 'email')],
+            'password' => 'required|min:8',
+            'code' => 'required|' . Rule::exists(EmailCode::class, 'code')->where('email', $this->email),
         ];
     }
 }
