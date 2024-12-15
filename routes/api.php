@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\EmailCodeController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RegionController;
@@ -43,6 +45,11 @@ Route::name('api.')
         Route::apiResource('cities', CityController::class)->only(['index', 'show']);
 
         Route::apiResource('service-categories', ServiceCategoryController::class)->only(['index']);
+
+        Route::apiResource('appointments', AppointmentController::class)->only(['index', 'show']);
+
+        Route::apiResource('favorites', FavoriteController::class)->only(['index', 'store']);
+        Route::delete('/favorites/{clinic_id}', [FavoriteController::class, 'destroy']);
 
         Route::apiResources([
             'clinics' => ClinicController::class,

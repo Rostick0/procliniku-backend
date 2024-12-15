@@ -28,6 +28,7 @@ class ClinicFactory extends Factory
             'longitude' => fake()->longitude(),
             'latitude' => fake()->latitude(),
             'description' => fake()->text(random_int(100, 300)),
+            'is_verification' => random_int(0, 1),
             'owner_id' => User::first()->id,
             'city_id' => City::inRandomOrder()->first()->id
         ];

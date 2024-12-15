@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Clinic extends Model
 {
@@ -71,5 +72,10 @@ class Clinic extends Model
     public function clinic_phones(): HasMany
     {
         return $this->hasMany(ClinicPhone::class);
+    }
+
+    public function my_favorite()
+    {
+        return $this->hasOne(Favorite::class)->where('user_id', auth()->id());
     }
 }

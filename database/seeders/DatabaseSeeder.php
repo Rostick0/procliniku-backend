@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Appointment;
 use App\Models\Clinic;
 use App\Models\ClinicCategory;
 use App\Models\ClinicPhone;
@@ -35,5 +36,7 @@ class DatabaseSeeder extends Seeder
                 ->has(ClinicService::factory(3), 'clinic_services')
                 ->create();
         }
+        
+        Appointment::factory(10)->create();
     }
 }
