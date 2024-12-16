@@ -40,8 +40,7 @@ class Clinic extends Model
 
     public function getMainCategoryAttribute()
     {
-        return $this->clinic_categories()->first()->category;
-        // return $this->clinic_categories()->with('category')->first();
+        return $this->clinic_categories()?->first()?->category;
     }
 
     public function owner(): BelongsTo

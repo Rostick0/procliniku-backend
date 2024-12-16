@@ -21,10 +21,10 @@ class UserSeeder extends Seeder
             'name' => 'Test',
             'email' => $email,
             'phone' => '88005553535',
-            'password' => Hash::make($email),
+            'password' => $email,
             'role' => UserRole::admin
         ];
 
-        $user = User::create($data);
+        $user = User::createOrFirst($data);
     }
 }
