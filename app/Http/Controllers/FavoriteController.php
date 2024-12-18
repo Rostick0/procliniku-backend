@@ -37,7 +37,7 @@ class FavoriteController extends Controller
 
         return new JsonResponse([
             'data' => $favorite
-        ]);
+        ], 201);
     }
 
     public function destroy(Request $request, int $clinic_id)

@@ -19,9 +19,9 @@ class Image extends Model
         'user_id',
     ];
 
-    protected $hidden = [
-        'updated_at'
-    ];
+    // protected $hidden = [
+    //     'updated_at'
+    // ];
 
     public function user(): BelongsTo
     {

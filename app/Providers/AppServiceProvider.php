@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Review;
+use App\Observers\ReviewObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
         //     }
         // } catch (\Exception $e) {
         // }
+
+        Review::observe(ReviewObserver::class);
     }
 }

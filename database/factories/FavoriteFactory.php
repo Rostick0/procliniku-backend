@@ -20,7 +20,7 @@ class FavoriteFactory extends Factory
     {
         return [
             'clinic_id' => Clinic::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id,
+            // 'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }

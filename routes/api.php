@@ -35,7 +35,7 @@ Route::name('api.')
         });
 
         Route::apiResource('files', FileController::class)->only(['store', 'show', 'destroy']);
-        Route::apiResource('images', ImageController::class)->only(['index', 'store', 'show', 'destroy']);
+        Route::apiResource('images', ImageController::class)->only(['store', 'show', 'destroy']);
 
         Route::post('/email-code', [EmailCodeController::class, 'store']);
 

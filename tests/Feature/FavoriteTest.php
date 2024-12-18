@@ -2,23 +2,23 @@
 
 namespace Tests\Feature;
 
+use App\Models\Clinic;
 use App\Models\Favorite;
-use App\Models\User;
+use Database\Factories\FavoriteFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Tests\UserTestUtil;
 
 class FavoriteTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * use index method in FavoriteController.
      */
     public function test_get_favorites(): void
     {
-        $user = User::first();
-        $token = JWTAuth::fromUser($user);
-        Favorite::factory()->create();
+        [$user, $token] = UserTestUtil::getUserAndToken();
+        Favorite::factory(1, ['user_id' => $user->id])->create();
 
         $response = $this->get('/api/favorites',  ['authorization' => 'Bearer ' . $token]);
 
@@ -38,26 +38,41 @@ class FavoriteTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJsonStructure([
-            'data' => [
-                array_keys(Favorite::first()->getAttributes())
-            ]
+            'data' => []
         ]);
     }
 
     public function test_create_favorite(): void
     {
-        $user = User::first();
-        $token = JWTAuth::fromUser($user);
-        Favorite::factory()->create();
+        [$user, $token] = UserTestUtil::getUserAndToken();
 
-        $response = $this->post('/api/favorites', [], ['authorization' => 'Bearer ' . $token]);
+        $data_create = (new FavoriteFactory())->definition();
+
+        $response = $this->post('/api/favorites', $data_create, ['authorization' => 'Bearer ' . $token]);
+
+        $response->assertStatus(201);
+
+        $response->assertJsonStructure([
+            'data' => array_keys(Favorite::first()->getAttributes())
+        ]);
+
+        $this->assertDatabaseHas(Favorite::class, [...$data_create, 'user_id' => $user->id]);
+    }
+
+    public function test_delete_favorite(): void
+    {
+        [$user, $token] = UserTestUtil::getUserAndToken();
+
+        $data_finded = Favorite::inRandomOrder()->first();
+
+        $response = $this->delete('/api/favorites/' . $data_finded->clinic_id, [], ['authorization' => 'Bearer ' . $token]);
 
         $response->assertStatus(200);
 
         $response->assertJsonStructure([
-            'data' => [
-                array_keys(Favorite::first()->getAttributes())
-            ]
+            'message'
         ]);
+
+        $this->assertDatabaseMissing(Favorite::class, ['id' => $data_finded->id]);
     }
 }

@@ -19,7 +19,7 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            'raiting' => random_int(1, 5),
+            'rating' => random_int(1, 5),
             'text' => fake()->text(random_int(200, 255)),
             'clinic_id' => Clinic::inRandomOrder()->first()?->id,
             'user_id' => User::first()?->id,

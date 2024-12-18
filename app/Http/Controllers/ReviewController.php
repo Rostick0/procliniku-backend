@@ -14,5 +14,6 @@ class ReviewController extends ApiController
         $this->model = new Review;
         $this->store_request = new StoreReviewRequest;
         $this->update_request = new UpdateReviewRequest;
+        $this->is_auth_id = true;
     }
 }

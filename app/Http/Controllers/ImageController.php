@@ -14,8 +14,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ImageController extends Controller
 {
-    public function index() {}
-
     public function store(StoreImageRequest $request): JsonResponse
     {
         $image = $request->file('image');
