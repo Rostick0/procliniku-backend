@@ -13,6 +13,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,7 @@ Route::name('api.')
         Route::apiResource('regions', RegionController::class)->only(['index', 'show']);
         Route::apiResource('cities', CityController::class)->only(['index', 'show']);
 
+        Route::apiResource('service-types', ServiceTypeController::class)->only(['index']);
         Route::apiResource('service-categories', ServiceCategoryController::class)->only(['index']);
 
         Route::apiResource('appointments', AppointmentController::class)->only(['index', 'show']);

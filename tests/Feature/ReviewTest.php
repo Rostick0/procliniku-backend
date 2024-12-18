@@ -2,15 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Models\City;
-use App\Models\Clinic;
 use App\Models\Favorite;
-use App\Models\Region;
 use App\Models\Review;
 use Database\Factories\ReviewFactory;
-use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 use Tests\UserTestUtil;
 
@@ -74,7 +71,6 @@ class ReviewTest extends TestCase
         [$user, $token] = UserTestUtil::getUserAndToken();
 
         $data_finded = Review::inRandomOrder()->first();
-        // $data_create = (new ReviewFactory())->definition();
 
         $response = $this->delete('/api/reviews/' . $data_finded->id, [], ['authorization' => 'Bearer ' . $token]);
 
