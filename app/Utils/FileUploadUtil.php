@@ -23,6 +23,6 @@ class FileUploadUtil
 
         $file->storeAs($random_name_with_extension);
 
-        return $random_name_with_extension;
+        return $random_name;
     }
 }

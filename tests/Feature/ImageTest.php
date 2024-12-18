@@ -23,7 +23,6 @@ class ImageTest extends TestCase
         [$user, $token] = UserTestUtil::getUserAndToken();
 
         $response = $this->post('/api/images', ['image' => $image], ['authorization' => 'Bearer ' . $token]);
-        // $response = $this->patch('/api/reviews/' . $data_finded->id, $data_create, [);
 
         $response->assertStatus(201);
 
@@ -33,7 +32,6 @@ class ImageTest extends TestCase
         ]);
 
         $this->assertDatabaseHas(Image::class, ['name' => $name_image]);
-        // $path = 'public/upload/image/' . Carbon::now()->format('Y/m/d') . '/';
 
         $name_jpeg = str_replace(config()->get('app.url') . '/storage-custom', 'public', $image_db->path);
         $name_webp = str_replace('.jpeg', '.webp', $name_jpeg);
