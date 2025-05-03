@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
@@ -54,6 +55,7 @@ Route::name('api.')
         Route::delete('/favorites/{clinic_id}', [FavoriteController::class, 'destroy']);
 
         Route::apiResources([
+            'articles' => ArticleController::class,
             'clinics' => ClinicController::class,
             'reviews' => ReviewController::class,
             'categories' => CategoryController::class,

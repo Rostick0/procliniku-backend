@@ -31,7 +31,7 @@ class UpdateClinicRequest extends FormRequest
             'longitude' => 'filled',
             'latitude' => 'filled',
             'description' => 'nullable|max:65536',
-            'city_id' => 'required|' . Rule::exists(City::class, 'id'),
+            'city_id' => 'filled|' . Rule::exists(City::class, 'id'),
         ];
     }
 }

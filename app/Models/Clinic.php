@@ -63,6 +63,11 @@ class Clinic extends Model
         return $this->hasMany(ClinicCategory::class);
     }
 
+    public function images()
+    {
+        return $this->morphMany(ImageRelat::class, 'image_relatsable');
+    }
+
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
@@ -76,6 +81,11 @@ class Clinic extends Model
     public function clinic_phones(): HasMany
     {
         return $this->hasMany(ClinicPhone::class);
+    }
+
+    public function clinic_workers(): HasMany
+    {
+        return $this->hasMany(ClinicWorker::class);
     }
 
     public function my_favorite()
