@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\UserRole;
 use App\Http\Requests\ClinicWorker\StoreClinicWorkerRequest;
 use App\Mail\CreateClinicWorker;
 use App\Models\Clinic;
@@ -35,14 +36,18 @@ class ClinicWorkerController extends ApiController
             ['email' => $request->email],
             [
                 'name' => $request->name,
+                'role' => UserRole::worker->value,
                 'password' => $user_password
             ]
         );
 
-        $data = $this->model::create([
-            ...$create_data,
-            'user_id' => $user->id
-        ]);
+        $data = $this->model::firstOrCreate(
+            [
+                'clinic_id' => $request->clinic_id,
+                'user_id' => $user->id
+            ],
+            ['role' => $request->role]
+        );
 
         if ($user->wasRecentlyCreated) {
             Mail::to($user)->send(new CreateClinicWorker(
