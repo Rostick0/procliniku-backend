@@ -25,6 +25,9 @@ class Clinic extends Model
         'description',
         'is_verification',
         'owner_id',
+        'icon_id',
+        'link_vk',
+        'link_videohost',
         'city_id',
     ];
 
@@ -61,6 +64,11 @@ class Clinic extends Model
     public function clinic_categories(): HasMany
     {
         return $this->hasMany(ClinicCategory::class);
+    }
+
+    public function icon(): BelongsTo
+    {
+        return $this->belongsTo(Image::class, 'icon_id');
     }
 
     public function images()

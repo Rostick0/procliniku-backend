@@ -56,6 +56,23 @@ class ClinicController extends ApiController
 
             $data->clinic_phones()->createMany($clinic_phones);
         }
+
+        if ($request->has('work_times')) {
+            $data->work_times()->delete();
+            $work_times = [];
+
+            for ($i = 0; $i < 7; $i++) {
+                if (!$request->has("work_times.$i.day")) continue;
+
+                $work_times[] = [
+                    'day' => $request->input("work_times.$i.day"),
+                    'time_start' => $request->input("work_times.$i.time_start"),
+                    'time_end' => $request->input("work_times.$i.time_end"),
+                ];
+            }
+
+            $data->work_times()->createMany($work_times);
+        }
     }
 
     public function __construct()
