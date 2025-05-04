@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\ClinicWorkerController;
 use App\Http\Controllers\EmailCodeController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FileController;
@@ -53,6 +54,8 @@ Route::name('api.')
 
         Route::apiResource('favorites', FavoriteController::class)->only(['index', 'store']);
         Route::delete('/favorites/{clinic_id}', [FavoriteController::class, 'destroy']);
+
+        Route::apiResource('clinic-workers', ClinicWorkerController::class)->except(['update']);
 
         Route::apiResources([
             'articles' => ArticleController::class,

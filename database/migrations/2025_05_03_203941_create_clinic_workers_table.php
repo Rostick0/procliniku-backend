@@ -1,5 +1,7 @@
 <?php
 
+use App\Enum\ClinicWorkerRole;
+use App\Utils\EnumFields;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('clinic_id')->references('id')->on('clinics')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->enum('role', EnumFields::getColumn(ClinicWorkerRole::class));
             $table->timestamps();
         });
     }

@@ -14,5 +14,6 @@ class ArticleController extends ApiController
         $this->model = new Article;
         $this->store_request = new StoreArticleRequest;
         $this->update_request = new UpdateArticleRequest;
+        $this->is_auth_id = true;
     }
 }
