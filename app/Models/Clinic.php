@@ -81,6 +81,21 @@ class Clinic extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function reviews_card(): HasMany
+    {
+        return $this->reviews()->take(3);
+    }
+
+    public function articles(): HasMany
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function articles_card(): HasMany
+    {
+        return $this->articles()->take(3);
+    }
+
     public function clinic_services(): HasMany
     {
         return $this->hasMany(ClinicService::class);
