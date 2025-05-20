@@ -57,10 +57,12 @@ Route::name('api.')
 
         Route::apiResource('clinic-workers', ClinicWorkerController::class)->except(['update']);
 
+        Route::apiResource('reviews', ReviewController::class)->only(['index', 'show', 'destroy']);
+        Route::post('reviews', [ReviewController::class, 'storeOrUpdate']);
+
         Route::apiResources([
             'articles' => ArticleController::class,
             'clinics' => ClinicController::class,
-            'reviews' => ReviewController::class,
             'categories' => CategoryController::class,
             'services' => ServiceController::class
         ]);

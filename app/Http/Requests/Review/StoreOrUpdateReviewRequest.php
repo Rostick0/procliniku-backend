@@ -6,13 +6,14 @@ use App\Models\Clinic;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreReviewRequest extends FormRequest
+class StoreOrUpdateReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
+        return true;
         return auth()->check();
     }
 
