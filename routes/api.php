@@ -16,6 +16,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceTypeController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -59,6 +60,8 @@ Route::name('api.')
 
         Route::apiResource('reviews', ReviewController::class)->only(['index', 'show', 'destroy']);
         Route::post('reviews', [ReviewController::class, 'storeOrUpdate']);
+
+        Route::patch('user-profile', [UserProfileController::class, 'update']);
 
         Route::apiResources([
             'articles' => ArticleController::class,
