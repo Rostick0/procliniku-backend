@@ -41,6 +41,12 @@ class ClinicWorkerController extends ApiController
             ]
         );
 
+        if ($user->role === UserRole::client->value) {
+            $user->update([
+                'role' => UserRole::worker->value,
+            ]);
+        }
+
         $data = $this->model::firstOrCreate(
             [
                 'clinic_id' => $request->clinic_id,
